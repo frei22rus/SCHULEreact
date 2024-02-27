@@ -1,13 +1,22 @@
-import React from 'react';
-import Home from './components/home';
-import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import HomePage from './components/home';
+import AboutPage from './components/about';
+import PostPage from './components/post';
+import LoginPage from './components/auth/login';
+import ErrorPage from './components/errorpages';
+import { Layout } from './components/Layout';
 
 function App() {
   return (
-    <div className="App">
-      <h1>123</h1>
-      <Home />
-    </div>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<HomePage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="post" element={<PostPage />} />
+        <Route path="login" element={<LoginPage />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Route>
+    </Routes>
   );
 }
 
